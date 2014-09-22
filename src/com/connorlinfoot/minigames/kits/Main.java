@@ -53,7 +53,11 @@ public class Main extends JavaPlugin implements Listener {
             if (config.get("Kits." + node + ".Name") != null) {
                 String kitName = config.getString("Kits." + node + ".Name");
                 if( config.getString("Kits." + node + ".Items.1.Material") == null ) continue;
-                ItemStack is = new ItemStack(Material.getMaterial(config.getString("Kits." + node + ".Items.1.Material")));
+                Integer amount = 0;
+                if( config.get("Kits." + node + ".Items.1.Amount") != null ){
+                    amount = config.getInt("Kits." + node + ".Items.1.Amount");
+                }
+                ItemStack is = new ItemStack(Material.getMaterial(config.getString("Kits." + node + ".Items.1.Material")),amount);
                 ItemMeta im = is.getItemMeta();
                 im.setDisplayName(ChatColor.RESET + ChatColor.translateAlternateColorCodes('&', kitName));
                 is.setItemMeta(im);
