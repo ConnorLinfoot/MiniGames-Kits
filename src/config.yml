@@ -1,0 +1,34 @@
+# Kit Format:
+#  Kits:
+#    1:
+#      Name: Apple God
+#      Price: 0
+#      Items:
+#        1:
+#          Material: APPLE
+#          Amount: 2
+#        2:
+#          Material: GOLD_INGOT
+#          Amount: 16
+
+Kits:
+  1:
+      Name: Apple God
+      Price: 0
+      Items:
+        1:
+          Material: APPLE
+          Amount: 2
+        2:
+          Material: GOLD_INGOT
+          Amount: 16
+  2:
+    Name: Diamond Man
+    Price: 500
+    Items:
+      1:
+        Material: DIAMOND
+        Amount: 2
+      2:
+        Material: GOLD_INGOT
+        Amount: 16
