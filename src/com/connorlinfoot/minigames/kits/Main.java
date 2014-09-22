@@ -4,6 +4,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Server;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -65,6 +67,7 @@ public class Main extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e){
+        // This is just temp for testing
         openKitGUI(e.getPlayer());
     }
 
@@ -81,4 +84,12 @@ public class Main extends JavaPlugin implements Listener {
         }, 1L);
     }
 
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if( sender instanceof Player ){
+            Player player = (Player) sender;
+            openKitGUI(player);
+        }
+        return true;
+    }
 }
