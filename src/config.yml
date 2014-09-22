@@ -32,3 +32,23 @@ Kits:
       2:
         Material: GOLD_INGOT
         Amount: 16
+  3:
+    Name: "&eThis should look cool?"
+    Price: 500
+    Items:
+      1:
+        Material: SKULL_ITEM
+        Amount: 2
+      2:
+        Material: GOLD_INGOT
+        Amount: 16
+  4:
+    Name: Diamond Man 2
+    Price: 500
+    Items:
+      1:
+        Material: DIAMOND
+        Amount: 2
+      2:
+        Material: GOLD_INGOT
+        Amount: 16

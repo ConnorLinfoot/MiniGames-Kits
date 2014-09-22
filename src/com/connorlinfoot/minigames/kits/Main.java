@@ -10,9 +10,7 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -37,7 +35,7 @@ public class Main extends JavaPlugin implements Listener {
         console.sendMessage(ChatColor.GREEN + "=========== VERSION: 1.0 ===========");
         console.sendMessage(ChatColor.GREEN + "======== BY CONNOR LINFOOT! ========");
 
-        Bukkit.getPluginManager().registerEvents(this,this);
+        // Bukkit.getPluginManager().registerEvents(this,this);
 
         // Use this when using it in your own plugin
         //console.sendMessage(ChatColor.GREEN + "Using MiniGamesKits by Connor Linfoot!");
@@ -57,7 +55,7 @@ public class Main extends JavaPlugin implements Listener {
                 if( config.getString("Kits." + node + ".Items.1.Material") == null ) continue;
                 ItemStack is = new ItemStack(Material.getMaterial(config.getString("Kits." + node + ".Items.1.Material")));
                 ItemMeta im = is.getItemMeta();
-                im.setDisplayName(kitName);
+                im.setDisplayName(ChatColor.RESET + ChatColor.translateAlternateColorCodes('&', kitName));
                 is.setItemMeta(im);
                 arrayList.add(is);
             }
@@ -65,14 +63,23 @@ public class Main extends JavaPlugin implements Listener {
         return arrayList;
     }
 
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent e){
-        // This is just temp for testing
-        openKitGUI(e.getPlayer());
-    }
-
     public static void openKitGUI(final Player player){
-        final Inventory inventory = Bukkit.createInventory(player,54,"Kits");
+        // Determine inventory size
+        Integer size = getKits().size();
+        if( size <= 9 ) {
+            size = 9;
+        } else if( size <= 18 ){
+            size = 18;
+        } else if( size <= 27 ){
+            size = 27;
+        } else if( size <= 36 ){
+            size = 36;
+        } else if( size <= 45 ){
+            size = 45;
+        } else {
+            size = 54;
+        }
+        final Inventory inventory = Bukkit.createInventory(player,size,"Kits");
         for( ItemStack is : getKits() ){
             inventory.addItem(is);
         }
